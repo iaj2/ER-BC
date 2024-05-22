@@ -81,7 +81,6 @@ for hospital_data in hospitals:
     wait_times.append(WaitTime(hosp_id=hospital_data["id"], hospital_name=hospital_data["name"], wait_time=hospital_data["wait_time"]))
 
 def wait_times_thread():
-    """Example of how to send server generated events to clients."""
     count = 0
     while True:
         
