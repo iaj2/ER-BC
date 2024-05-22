@@ -1,4 +1,4 @@
-#!/Users/karanchick/Desktop/ER-BC/app/venv/bin/python3.12
+#!/home/iaj2/personalprojects/ER-BC/app/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
