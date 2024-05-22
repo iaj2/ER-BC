@@ -1,3 +1,20 @@
 # ER-BC: nwHacks 2024 Project
 
-This project takes the user's location to deliver a list of the nearest hospitals and their distance from the user, as well as the current wait time at the emergency room. Built using Python, JQuery, HTML, CSS, JS, and more!
+A site that allows BC residents to view emergency room wait times at nearby hospitals, obtain directions, and complete an intake form.
+
+## Features
+
+- Use location to see nearest hopitals
+- See hospital wait times real-time via web sockets
+- Intake form
+- Map view to see where the hospital is
+
+## Technology used
+
+- Python (Flask)
+- HTML
+- CSS
+- JavaScript
+- jQuery
+
+### [See live](http://erbc.eba-k4gpx3iw.us-west-2.elasticbeanstalk.com/)
