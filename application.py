@@ -8,19 +8,19 @@ from form.forms import PatientRegistrationForm
 from wait_time.wait_time import WaitTime
 from hospitals.hospitals import hospitals
 
-app = Flask(__name__, static_url_path='/static')
-app.config['SECRET_KEY'] = 'secret_key'
+application = Flask(__name__, static_url_path='/static')
+application.config['SECRET_KEY'] = 'secret_key'
 
 async_mode = None
-socketio = SocketIO(app, async_mode=async_mode)
+socketio = SocketIO(application, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('index.html', hospitals=hospitals)
 
-@app.route('/hospital/<string:hospital_id>')
+@application.route('/hospital/<string:hospital_id>')
 def hospital_detail(hospital_id):
     hospital = next((h for h in hospitals if h["id"] == hospital_id), None)
     if hospital:
@@ -28,7 +28,7 @@ def hospital_detail(hospital_id):
     else:
         return "Hospital not found", 404
 
-@app.route('/submit_form', methods=['GET', 'POST'])
+@application.route('/submit_form', methods=['GET', 'POST'])
 def submit_form():
     form = PatientRegistrationForm()
 
@@ -64,12 +64,12 @@ def submit_form():
     # if form validation fails or there are errors, render the form page again
     return render_template('patient_registration.html', form=form)
 
-@app.route('/confirmation')
+@application.route('/confirmation')
 def confirmation_page():
     # render a confirmation page or redirect to another page
     return render_template('confirmation.html')
 
-@app.route('/hospital')
+@application.route('/hospital')
 def hospital_page():
     # render a hospital page or redirect to another page
     return render_template('hospital.html', hospitals=hospitals)
@@ -105,4 +105,4 @@ def connect():
     emit('connected', {'data': data})
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(application, debug=True)
